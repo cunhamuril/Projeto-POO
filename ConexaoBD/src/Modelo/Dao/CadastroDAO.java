@@ -18,46 +18,43 @@ import org.me.concexaobd.ConexaoBD;
  * @author Marcio Damazio
  */
 public class CadastroDAO {
-     public boolean checkLogin(String NOME_COMPLETO, String Usuario, String ID_DE_FUNCIONARIO, String Senha, String CONFIRMAR_SENHA)  {
-        
+
+    public String msg;
+    public boolean check = false;
+
+    public String cadastro(String NOME_COMPLETO, String Usuario, String ID_DE_FUNCIONARIO, String Senha, String confSenha) {
+
         Connection con = null;
-            try {
-                con = ConexaoBD.getConnection();
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            con = ConexaoBD.getConnection();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        
 
-        boolean check = false;
-        
-        try {
-            
-            stmt = con.prepareStatement("INSERT INTO EMPRESA.TABUsers "+"(NOME_COMPLETO , USUARIO, ID_DE_FUNCIONARIO, SENHA, CONFIRMAR_SENHA) " + "VALUES (?, ?, ?, ?, ?)");
-            stmt.setString(1,NOME_COMPLETO);
-            stmt.setString(2, Usuario);
-            stmt.setString(3, ID_DE_FUNCIONARIO);
-            stmt.setString(4,Senha);
-            stmt.setString(5, CONFIRMAR_SENHA);
-            stmt.executeUpdate();
-           
-            
-            if (rs.next()) {
+        if (Senha.equals(confSenha)) {
+            try {
 
-              
-                check = true;
+                stmt = con.prepareStatement("INSERT INTO EMPRESA.TABUsers " + "(NOME_COMPLETO , USUARIO, ID_DE_FUNCIONARIO, SENHA) " + "VALUES (?, ?, ?, ?)");
+                stmt.setString(1, NOME_COMPLETO);
+                stmt.setString(2, Usuario);
+                stmt.setString(3, ID_DE_FUNCIONARIO);
+                stmt.setString(4, Senha);
+
+                stmt.executeUpdate();
+                this.msg = "Usuário cadastrado com sucesso!";
+                this.check = true;
+
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                ConexaoBD.closeConnection(con, stmt, rs);
             }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            ConexaoBD.closeConnection(con, stmt, rs);
+        } else {
+            this.msg = "Senhas não correspondem!";
         }
 
-        return check;
-        
+        return msg;
     }
 }
-
-

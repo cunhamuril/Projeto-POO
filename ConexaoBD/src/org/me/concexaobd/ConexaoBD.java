@@ -8,23 +8,24 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 //import static org.apache.derby.impl.tools.ij.ijConstants.DRIVER;
+
 /**
  *
  * @author Marcio Damazio
  */
 public class ConexaoBD {
-  
-    private static final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
-    private static final String URL = "jdbc:derby://localhost:1527/User";
-    private static final String USER = "EMPRESA";
+
+    // private static final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
+    private static final String URL = "jdbc:derby://localhost:1527/ProjetoPOO";
+    private static final String USER = "empresa";
     private static final String PASS = "empresa";
 
     public static Connection getConnection() throws ClassNotFoundException {
-          java.sql.Connection conexao = null;
-    
+        java.sql.Connection conexao = null;
+
         try {
-            
-            Class.forName(DRIVER);
+
+            //Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USER, PASS);
             return conexao;
         } catch (SQLException ex) {
@@ -72,4 +73,3 @@ public class ConexaoBD {
         }
     }
 }
-

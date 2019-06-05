@@ -42,6 +42,7 @@ public class Login extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        lblErro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -87,8 +88,10 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("Senha");
 
         txtUsuario.setFont(new java.awt.Font("MS UI Gothic", 1, 22)); // NOI18N
+        txtUsuario.setName("txtUsuario"); // NOI18N
 
         txtSenha.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        txtSenha.setName("txtSenha"); // NOI18N
         txtSenha.setPreferredSize(new java.awt.Dimension(6, 34));
 
         btnSalvar.setBackground(new java.awt.Color(0, 153, 0));
@@ -126,6 +129,10 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
         jLabel5.setText("Ainda não tem conta?");
 
+        lblErro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblErro.setForeground(new java.awt.Color(204, 0, 0));
+        lblErro.setName("LblErro"); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -152,9 +159,11 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                            .addComponent(txtUsuario))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblErro)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                                .addComponent(txtUsuario)))
                         .addGap(69, 69, 69))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -170,16 +179,21 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(52, 52, 52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblErro)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jLabel5))
                 .addContainerGap())
         );
+
+        lblErro.getAccessibleContext().setAccessibleName("LblErro");
+        lblErro.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,20 +220,24 @@ public class Login extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         UsuarioDAO dao = new UsuarioDAO();
-       
-       if(dao.checkLogin(txtUsuario.getText(), txtSenha.getText())){
-           new ListaProdutos().setVisible(true);
-           this.dispose();
-       }else{
-           JOptionPane.showMessageDialog(null, "Usuário e/ou senha incorretos!");
-       }
+
+        if (!txtUsuario.getText().equals("") || !txtSenha.getText().equals("")) {
+            if (dao.checkLogin(txtUsuario.getText(), txtSenha.getText())) {
+                new ListaProdutos().setVisible(true);
+                this.dispose();
+                lblErro.setText(null);
+            } else {
+                lblErro.setText("Usuário e/ou senha incorretos!");
+            }
+        } else {
+            lblErro.setText("Informe usuário e senha!");
+        }
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         CadastroUsuario cd = new CadastroUsuario();
         cd.show();
-        this.hide();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -272,6 +290,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblErro;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
