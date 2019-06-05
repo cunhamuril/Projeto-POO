@@ -1,0 +1,17 @@
+
+
+CREATE TABLE TABUsers
+(
+ID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+
+Nome_completo VARCHAR(50) NOT NULL,
+Usuario VARCHAR(50),
+ID_de_funcionario integer,
+Senha VARCHAR(20),
+Confirmar_senha VARCHAR(20),
+UNIQUE (ID)
+);
+
+
+
+select*from TABUsers;
