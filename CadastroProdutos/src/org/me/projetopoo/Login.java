@@ -224,7 +224,7 @@ public class Login extends javax.swing.JFrame {
         if (!txtUsuario.getText().equals("") || !txtSenha.getText().equals("")) {
             if (dao.checkLogin(txtUsuario.getText(), txtSenha.getText())) {
                 new ListaProdutos().setVisible(true);
-                this.dispose();
+                this.hide();
                 lblErro.setText(null);
             } else {
                 lblErro.setText("Usuário e/ou senha incorretos!");

@@ -17,6 +17,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
     /**
      * Creates new form CadastroUsuario
      */
+    CadastroDAO dao = new CadastroDAO();
+
     public CadastroUsuario() {
         initComponents();
     }
@@ -45,13 +47,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
         txtConf_Senha = new javax.swing.JPasswordField();
         btnCadastrar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        lblID = new javax.swing.JLabel();
-        lblConfSenha = new javax.swing.JLabel();
-        lblUser = new javax.swing.JLabel();
-        lblSenha = new javax.swing.JLabel();
         lblErrConfSenha = new javax.swing.JLabel();
         lblErrSenha = new javax.swing.JLabel();
-        LblErrID = new javax.swing.JLabel();
+        lblErrID = new javax.swing.JLabel();
         lblErrUser = new javax.swing.JLabel();
         lblErrNome = new javax.swing.JLabel();
 
@@ -110,11 +108,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         txtSenha.setPreferredSize(new java.awt.Dimension(201, 33));
 
         txtConf_Senha.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        txtConf_Senha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConf_SenhaActionPerformed(evt);
-            }
-        });
 
         btnCadastrar.setBackground(new java.awt.Color(51, 153, 255));
         btnCadastrar.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
@@ -138,35 +131,23 @@ public class CadastroUsuario extends javax.swing.JFrame {
             }
         });
 
-        lblID.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
-        lblID.setForeground(new java.awt.Color(204, 0, 0));
-
-        lblConfSenha.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
-        lblConfSenha.setForeground(new java.awt.Color(204, 0, 0));
-
-        lblUser.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
-        lblUser.setForeground(new java.awt.Color(204, 0, 0));
-
-        lblSenha.setFont(new java.awt.Font("MS UI Gothic", 0, 18)); // NOI18N
-        lblSenha.setForeground(new java.awt.Color(204, 0, 0));
-
-        lblErrConfSenha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblErrConfSenha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblErrConfSenha.setForeground(new java.awt.Color(153, 0, 0));
         lblErrConfSenha.setToolTipText("");
 
-        lblErrSenha.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblErrSenha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblErrSenha.setForeground(new java.awt.Color(153, 0, 0));
         lblErrSenha.setToolTipText("");
 
-        LblErrID.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        LblErrID.setForeground(new java.awt.Color(153, 0, 0));
-        LblErrID.setToolTipText("");
+        lblErrID.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lblErrID.setForeground(new java.awt.Color(153, 0, 0));
+        lblErrID.setToolTipText("");
 
-        lblErrUser.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblErrUser.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblErrUser.setForeground(new java.awt.Color(153, 0, 0));
         lblErrUser.setToolTipText("");
 
-        lblErrNome.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblErrNome.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblErrNome.setForeground(new java.awt.Color(153, 0, 0));
         lblErrNome.setToolTipText("");
 
@@ -175,7 +156,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(155, Short.MAX_VALUE)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,16 +174,13 @@ public class CadastroUsuario extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
+                                .addGap(12, 12, 12)
                                 .addComponent(lblErrSenha))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblConfSenha)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblErrConfSenha))
-                            .addComponent(lblSenha)))
+                                .addGap(12, 12, 12)
+                                .addComponent(lblErrConfSenha))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -216,27 +194,17 @@ public class CadastroUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txtID_de_funcionario, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblID)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(LblErrID)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(12, 12, 12)
+                                .addComponent(lblErrID))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblErrUser)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblUser))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(txtNome_completo, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblErrNome)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblErrUser))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtNome_completo, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblErrNome)))))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,25 +218,21 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUsuario)
                     .addComponent(jLabel4)
-                    .addComponent(lblUser)
                     .addComponent(lblErrUser))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtID_de_funcionario)
                     .addComponent(jLabel5)
-                    .addComponent(lblID)
-                    .addComponent(LblErrID))
+                    .addComponent(lblErrID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSenha)
                     .addComponent(jLabel6)
                     .addComponent(lblErrSenha))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtConf_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(lblConfSenha)
                     .addComponent(lblErrConfSenha))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -282,7 +246,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -291,51 +255,57 @@ public class CadastroUsuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtConf_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConf_SenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtConf_SenhaActionPerformed
-
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        CadastroDAO dao = new CadastroDAO();
-        String msg = (dao.cadastro(txtNome_completo.getText(), txtUsuario.getText(),
-                txtID_de_funcionario.getText(), txtSenha.getText(), txtConf_Senha.getText()));
-        if (dao.check) {
-            JOptionPane.showMessageDialog(this, msg, "Status", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
+        VerificarCampos();
+
+        if (txtSenha.getText() == null) {
+            VerificarCampos();
         } else {
-            lblConfSenha.setText(msg);
+            if (txtNome_completo.getText() == null) {
+                VerificarCampos();
+            } else {
+                VerificarCampos();
+                dao.checkUser(txtUsuario.getText(), txtID_de_funcionario.getText());
+                if (!dao.check2) {
+                    if (txtSenha.getText().length() >= 6 && txtSenha.getText().length() <= 16) {
+                        dao.checkFunc(txtID_de_funcionario.getText());
+                        if (dao.check3) {
+                            String msg = (dao.cadastro(txtNome_completo.getText(), txtUsuario.getText(),
+                                    txtID_de_funcionario.getText(), txtSenha.getText(), txtConf_Senha.getText()));
+                            if (dao.check) {
+                                JOptionPane.showMessageDialog(this, msg, "Status", JOptionPane.INFORMATION_MESSAGE);
+                                this.dispose();
+                            } else {
+                                lblErrConfSenha.setText(msg);
+                            }
+                        } else {
+                            lblErrID.setText("ID inválido");
+                        }
+                    } else {
+                        lblErrSenha.setText("Mín 6, máx 16 caracteres");
+                    }
+                } else {
+                    lblErrNome.setText("Funcionário já cadastrado");
+                }
+            }
         }
 
-//         this.dispose();
-//         new Login().setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     public void VerificarCampos() {
-        boolean vazio = false;
-
-        if (txtNome_completo.getText().equals(null)) {
-            lblErrNome.setText("Insira o seu nome");
-            vazio = true;
-        } else {
-            vazio = false;
-        }
-
-        if (txtUsuario.getText().equals(null)) {
-            lblErrUser.setText("Insira o nome de usuário");
-            vazio = true;
-        } else {
-            vazio = false;
-        }
-
+        lblErrNome.setText(txtNome_completo.getText().equals("") ? "Insira o seu nome" : "");
+        lblErrUser.setText(txtUsuario.getText().equals("") ? "Insira o nome de usuário" : "");
+        lblErrID.setText(txtID_de_funcionario.getText().equals("") ? "Insira o ID" : "");
+        lblErrSenha.setText(txtSenha.getText().equals("") ? "Insira a senha" : "");
+        lblErrConfSenha.setText(txtConf_Senha.getText().equals("") ? "Insira a senha" : "");
     }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -378,7 +348,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LblErrID;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -389,14 +358,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblConfSenha;
     private javax.swing.JLabel lblErrConfSenha;
+    private javax.swing.JLabel lblErrID;
     private javax.swing.JLabel lblErrNome;
     private javax.swing.JLabel lblErrSenha;
     private javax.swing.JLabel lblErrUser;
-    private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblSenha;
-    private javax.swing.JLabel lblUser;
     private javax.swing.JPasswordField txtConf_Senha;
     private javax.swing.JTextField txtID_de_funcionario;
     private javax.swing.JTextField txtNome_completo;
