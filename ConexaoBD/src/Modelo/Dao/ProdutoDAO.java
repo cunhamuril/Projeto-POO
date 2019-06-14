@@ -56,6 +56,68 @@ public class ProdutoDAO {
         return msg;
     }
 
+    public String Alterar(String id, String nome, String qtd, String fab, String lote, String obs) {
+
+        Connection con = null;
+        try {
+            con = ConexaoBD.getConnection();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE tabproduto SET nome = ?, quantidade = ?, "
+                    + "data_fab = ?, lote = ?, obs = ? WHERE id_produto = ?"
+                    + "");
+            stmt.setString(1, nome);
+            stmt.setString(2, qtd);
+            stmt.setString(3, fab);
+            stmt.setString(4, lote);
+            stmt.setString(5, obs);
+            stmt.setString(6, id);
+
+            stmt.executeUpdate();
+            this.msg = "Produto alterado com sucesso!";
+            this.check = true;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConexaoBD.closeConnection(con, stmt, rs);
+        }
+
+        return msg;
+    }
+
+    public String Excluir(String id) {
+        Connection con = null;
+        try {
+            con = ConexaoBD.getConnection();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement("DELETE FROM tabproduto WHERE id_produto = ?");
+            stmt.setString(1, id);
+
+            stmt.executeUpdate();
+            this.msg = "Produto excluído com sucesso!";
+            this.check = true;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            ConexaoBD.closeConnection(con, stmt, rs);
+        }
+
+        return msg;
+    }
+
     public List<Produtos> getProduto(String id) {
         List<Produtos> resultados = new ArrayList<>();
 
