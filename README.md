@@ -1,5 +1,5 @@
 # Objetivos:
-Criar um software para registrar produtos em estoque de uma empresa, afim de manter o controle dos mesmos. 
+Desenvolver um software para registrar produtos em estoque de uma empresa, afim de manter o controle dos mesmos. 
 
 # Objetivos específicos:
 O sistema terá telas intuitivas, de fácil compreensão e sempre buscando agradar a qualquer usuário que venha
