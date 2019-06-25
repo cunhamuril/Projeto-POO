@@ -9,3 +9,5 @@ com opções de inserir, editar e excluir produto; tela de inserção de produto
 
 ## Segue documentação completa do projeto:
 [Documentação](https://drive.google.com/open?id=1jux6CmxCLIoO2QxHZUs19aIKs0-AO3Dl)
+
+## Projeto finalizado com nota 8,5
